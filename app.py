@@ -30,5 +30,7 @@ def upload_vcf():
 def serve_vcf(filename):
     return send_from_directory(UPLOAD_FOLDER, filename, mimetype='text/vcard')
 
+# 🟢 THIS is the key for Render
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  # Render injects PORT as an environment variable
+    app.run(host='0.0.0.0', port=port)
